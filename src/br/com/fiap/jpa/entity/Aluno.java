@@ -7,10 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.TemporalType;		
 
 @Entity
 @Table(name="T_E_ALUNO")
@@ -27,10 +28,14 @@ public class Aluno {
 	
 	@Column(name="ds_curso")
 	private Curso curso;
-	
+
 	@Column(name="dt_matricula")
 	@Temporal(TemporalType.DATE)
 	private Calendar dataMAtricula;
+	
+	@Lob
+	@Column(name="fl_foto")
+	private byte[] foto;
 	
 	public Aluno() {
 		super();
@@ -65,6 +70,14 @@ public class Aluno {
 
 	public void setDataMAtricula(Calendar dataMAtricula) {
 		this.dataMAtricula = dataMAtricula;
+	}
+
+	public byte[] getFoto() {
+		return foto;
+	}
+
+	public void setFoto(byte[] foto) {
+		this.foto = foto;
 	}
 
 	
